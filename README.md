@@ -19,3 +19,16 @@ $ yarn start
 $ yarn build
 $ yarn start:prod
 ```
+
+## Debug
+
+Add in `launch.json`
+```json
+    {
+        "type": "node",
+        "request": "attach",
+        "name": "nodemon",
+        "restart": true,
+        "port": 9229
+    }
+```
