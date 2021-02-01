@@ -1,8 +1,8 @@
-import {Context, ResponseFilter, ResponseFilterMethods} from "@tsed/common";
+import {ResponseFilter, ResponseFilterMethods} from "@tsed/common";
 
 @ResponseFilter("text/plain") // text/plain for example.
 export class MyResponseFilter implements ResponseFilterMethods {
-  transform(data: any, ctx: Context) {
+  transform(data: any) {
     return {
       filter: data
     };

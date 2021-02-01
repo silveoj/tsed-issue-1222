@@ -9,12 +9,12 @@ import methodOverride from "method-override";
 import cors from "cors";
 import "@tsed/ajv";
 import "@tsed/swagger";
-import { IndexCtrl } from "./controllers/pages/IndexCtrl";
 import {MyResponseFilter} from "./filters/MyResponseFilter";
 
 export const rootDir = __dirname;
 export const isProduction = process.env.NODE_ENV === Env.PROD;
 
+// istanbul ignore next
 if (isProduction) {
   $log.appenders.set("stdout", {
     type: "stdout",
@@ -42,14 +42,9 @@ if (isProduction) {
     disableRoutesSummary: isProduction
   },
   mount: {
-    "/rest": [
-      `${rootDir}/controllers/**/*.ts`
-    ],
-    "/": [IndexCtrl]
+    "/rest": [`${rootDir}/controllers/**/*.ts`]
   },
-  responseFilters: [
-    MyResponseFilter
-  ],
+  responseFilters: [MyResponseFilter],
   swagger: [
     {
       path: "/v2/docs",
@@ -64,9 +59,7 @@ if (isProduction) {
     root: `${rootDir}/../views`,
     viewEngine: "ejs"
   },
-  exclude: [
-    "**/*.spec.ts"
-  ]
+  exclude: ["**/*.spec.ts"]
 })
 export class Server {
   @Inject()
@@ -82,8 +75,10 @@ export class Server {
       .use(compress({}))
       .use(methodOverride())
       .use(bodyParser.json())
-      .use(bodyParser.urlencoded({
-        extended: true
-      }));
+      .use(
+        bodyParser.urlencoded({
+          extended: true
+        })
+      );
   }
 }

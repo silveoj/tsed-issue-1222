@@ -8,11 +8,13 @@ describe("HelloWorldController", () => {
   let request: SuperTest.SuperTest<SuperTest.Test>;
   let responseFilter: MyResponseFilter;
 
-  beforeEach(PlatformTest.bootstrap(Server, {
-    mount: {
-      "/rest": [MyController]
-    }
-  }));
+  beforeEach(
+    PlatformTest.bootstrap(Server, {
+      mount: {
+        "/rest": [MyController]
+      }
+    })
+  );
   beforeEach(() => {
     request = SuperTest(PlatformTest.callback());
     responseFilter = PlatformTest.get<MyResponseFilter>(MyResponseFilter);
@@ -35,7 +37,7 @@ describe("HelloWorldController", () => {
 
     expect(response.headers["content-type"]).toEqual("application/json; charset=utf-8");
     expect(response.body).toEqual({
-      "jsonexample": 1
+      jsonexample: 1
     });
     expect(responseFilter.transform).not.toBeCalled();
   });
@@ -53,7 +55,7 @@ describe("HelloWorldController", () => {
     expect(response.headers["content-type"]).toEqual("application/json; charset=utf-8");
     expect(responseFilter.transform).not.toBeCalled();
     expect(response.body).toEqual({
-      "jsonexample": 1
+      jsonexample: 1
     });
   });
 
@@ -62,7 +64,7 @@ describe("HelloWorldController", () => {
 
     expect(response.headers["content-type"]).toEqual("text/plain; charset=utf-8");
     expect(responseFilter.transform).toHaveBeenCalledWith("text-plain", expect.any(PlatformContext));
-    expect(response.text).toEqual("{\"filter\":\"text-plain\"}");
+    expect(response.text).toEqual('{"filter":"text-plain"}');
   });
 
   it("should call GET /rest/scenario-6", async () => {
@@ -70,6 +72,6 @@ describe("HelloWorldController", () => {
 
     expect(response.headers["content-type"]).toEqual("text/plain; charset=utf-8");
     expect(responseFilter.transform).toHaveBeenCalledWith("text-plain", expect.any(PlatformContext));
-    expect(response.text).toEqual("{\"filter\":\"text-plain\"}");
+    expect(response.text).toEqual('{"filter":"text-plain"}');
   });
 });

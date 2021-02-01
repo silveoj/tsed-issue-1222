@@ -17,7 +17,6 @@ export class MyController {
     };
   }
 
-
   @Get("/scenario-3")
   public scenario3(@Res() response: PlatformResponse) {
     response.setHeader("content-type", "image/png");
