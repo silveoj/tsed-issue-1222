@@ -10,7 +10,7 @@ import cors from "cors";
 import "@tsed/ajv";
 import "@tsed/swagger";
 import {MyResponseFilter} from "./filters/MyResponseFilter";
-import {MyResponseFilter2} from "./filters/MyResponseFilter2";
+// import {MyResponseFilter2} from "./filters/MyResponseFilter2";
 
 export const rootDir = __dirname;
 export const isProduction = process.env.NODE_ENV === Env.PROD;
@@ -45,7 +45,7 @@ if (isProduction) {
   mount: {
     "/rest": [`${rootDir}/controllers/**/*.ts`]
   },
-  responseFilters: [MyResponseFilter, MyResponseFilter2],
+  responseFilters: [MyResponseFilter /*, MyResponseFilter2*/],
   swagger: [
     {
       path: "/v2/docs",
