@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "0f96d0e3-b7ae-4eef-a014-b1173d0dd282",
+		"name": "tsed-filter-ex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.0.0.0:9090/rest/scenario-4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"allowed\":null}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:9090/rest/scenario-4",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "9090",
+					"path": [
+						"rest",
+						"scenario-4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
